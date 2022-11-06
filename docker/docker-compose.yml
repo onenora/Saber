@@ -1,0 +1,26 @@
+version: '3'
+services:
+  nginx:
+   container_name: nginx
+   image: altriabot/nginx:1.3
+   restart: always
+   network_mode: "host"
+   ports:
+     - 80:80
+     - 433:443
+   volumes:
+     - ./nginx/http.conf.d:/etc/nginx/http.conf.d
+     - ./nginx/stream.conf.d:/etc/nginx/stream.conf.d
+     - ./blog:/etc/nginx/html
+     - ./nginx/logs:/var/log/nginx
+     - ./nginx/ssl:/etc/nginx/ssl
+
+  trojan-go:
+    restart: always
+    image: teddysun/trojan-go
+    container_name: trojan-go
+    network_mode: "host"
+    volumes:
+    - ./trojan-go:/etc/trojan-go
+    depends_on:
+    - nginx

@@ -1,0 +1,26 @@
+{
+    "run_type": "server",
+    "local_addr": "127.0.0.1",
+    "local_port": 10241,
+    "remote_addr": "127.0.0.1",
+    "remote_port": 443,
+    "password": ["uuid"],
+    "ssl": {
+        "cert": "/etc/trojan-go/trgo.crt",
+        "key": "/etc/trojan-go/trgo.key",
+        "sni": "域名要填"
+    },
+    "tcp": {
+        "no_delay": true,
+        "keep_alive": true,
+        "prefer_ipv4": false
+    },
+    "mux": {
+    "enabled": true
+    },
+    "websocket": {
+        "enabled": true,
+        "path": "/uuid2",
+        "host": "域名要填"
+    }
+}
